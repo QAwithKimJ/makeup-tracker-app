@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html  lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Makeup Expiration Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>💄 Makeup Expiration Tracker</h1>
+    </header>
+
+    <main>
+        <section id="add-product">
+            <h2>Add a Product</h2>
+            <form id="product-form">
+                <input type="text" id="product-name" placeholder="Product Name" required>
+                <input type="text" id="brand" placeholder="Brand" required>
+                <select id="category">
+                    <option value="foundation">Foundation</option>
+                    <option value="mascara">Mascara</option>
+                    <option value="lipstick">Lipstick</option>
+                    <option value="eyeshadow">Eyeshadow</option>
+                </select>
+                <label>Purchase/Open Date:</label>
+                <input type="date" id="purchase-date" required>
+                <button type="submit">Add Product</button>
+            </form>
+        </section>
+
+        <section id="product-list">
+            <h2>My Products</h2>
+            <ul id="products"></ul>
+        </section>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+
+
+</html>
