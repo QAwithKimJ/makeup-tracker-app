@@ -18,10 +18,23 @@
                 <input type="text" id="product-name" placeholder="Product Name" required>
                 <input type="text" id="brand" placeholder="Brand" required>
                 <select id="category">
+                    <option value="" disabled selected>Select a category</option>
                     <option value="foundation">Foundation</option>
                     <option value="mascara">Mascara</option>
                     <option value="lipstick">Lipstick</option>
                     <option value="eyeshadow">Eyeshadow</option>
+                    <option value="blush">Blush</option>
+                    <option value="concealer">Concealer</option>
+                    <option value="primer">Primer</option>
+                    <option value="setting-spray">Setting Spray</option>
+                    <option value="bronzer">Bronzer</option>
+                    <option value="highlighter">Highlighter</option>
+                    <option value="lipgloss">Lip gloss</option>
+                    <option value="eyeliner">Eyeliner</option>
+                    <option value="lashes">Lashes</option>
+                    <option value="setting powder">Setting Powder</option>
+                    <option value="lip liner">Lip Liner</option>
+                    <option value="brow pencil">Brow Pencil</option>   
                 </select>
                 <label>Purchase/Open Date:</label>
                 <input type="date" id="purchase-date" required>
@@ -35,7 +48,23 @@
         </section>
     </main>
 
-    <script src="app.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const dateInput = document.getElementById("purchase-date");
+
+            let today = new Date();
+            let maxDate = today.toISOString().split("T")[0];
+            let minDate = new Date();
+            minDate.setFullYear(today.getFullYear() - 3);
+            let minDateString = minDate.toISOString().split("T")[0];
+
+            dateInput.setAttribute("max", maxDate);
+            dateInput.setAttribute("min", minDateString);
+        });
+
+    </script>
+        <script src="app.js"></script>
+
 </body>
 
 
