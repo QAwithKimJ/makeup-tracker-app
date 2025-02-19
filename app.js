@@ -1,7 +1,11 @@
+import { getExpirationStatus } from "./data/expiration.js";
+import { saveProducts, loadProducts } from "./data/storage.js";
+
 // making sure that the page content loads fully before executing any js 
 document.addEventListener("DOMContentLoaded", () => {
     const productForm = document.getElementById("product-form"); // grabs the form element to listen for user input
     const productList = document.getElementById("products");    // grabs the unordered list where products will be displayed
+
 
     let products = JSON.parse(localStorage.getItem("products")) || [];   // this returns a saved list of products or an empty list if none have been saved
     updateProductList();   //calls this function to display the saved products.
@@ -36,6 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
         productForm.reset();   // resets the form so input fields are cleared
     });
 
+
     function updateProductList() {
         productList.innerHTML = "";    ;// clears the list before adding new items
         products.forEach((product, index) => {            // loops through the products array and creates a list item for each product
@@ -52,8 +57,20 @@ document.addEventListener("DOMContentLoaded", () => {
             date.classList.add("product-date");
             date.textContent = `Purchase On: ${product.purchaseDate}`;
 
+            const expiration = getExpirationStatus(product);
+            const expirationLabel = document.createElement("span");
+            expirationLabel.textContent = expiration.status;
+            expirationLabel.style.backgroundColor = expiration.color;
+            expirationLabel.style.color = "#fff";
+            expirationLabel.style.padding = "4px 8px";
+            expirationLabel.style.borderRadius = "8px";
+            expirationLabel.style.fontWeight = "bold";
+            expirationLabel.style.display = "inline-block";
+            expirationLabel.style.marginLeft = "10px";
+
             container.appendChild(info);
             container.appendChild(date);
+            container.appendChild(expirationLabel);
             li.appendChild(container);
          
             // this creates a delete button for each product as well as functionality for how to handle deleted products without refreshing the page

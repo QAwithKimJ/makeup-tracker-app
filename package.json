@@ -1,0 +1,21 @@
+
+
+{
+  "type": "module",
+  "name": "makeup-tracker-app",
+  "version": "1.0.0",
+  "main": "app.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+  "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
+},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}
